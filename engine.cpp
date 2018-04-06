@@ -14,10 +14,13 @@ int EngineStart()
     {
 //Handle all input and then update relevnt objects.
     eventsystem->HandleEvents();
-//Select Correct Shaders then Draw Objects.
-    display->ClearScreen();
+//Select Correct Shaders and textures
     glUseProgram(shader->ShaderProgram);
+//Clear screen sky blue then Draw Objects.
+
+    display->ClearScreen();
     render->DrawObjects();
+//Swap Window buffer.
     SDL_GL_SwapWindow(display->Window);
 //Vsync 60fps
     eventsystem->CapFPS();
