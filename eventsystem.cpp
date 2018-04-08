@@ -31,6 +31,8 @@ void Eventsystem::HandleEvents()
         Quit = 1;
         break;
 
+        if(AllowUserInput)
+        {
         case SDL_KEYDOWN:
           switch(Event.key.keysym.sym)
           {
@@ -84,6 +86,7 @@ void Eventsystem::HandleEvents()
 
         case SDL_MOUSEWHEEL:
           ScrollWheelY = Event.wheel.y;
+          }
       }
     }
 

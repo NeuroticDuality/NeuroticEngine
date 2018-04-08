@@ -13,12 +13,21 @@ void CapFPS();
 
 SDL_Event Event;
 //Keys.
-char Quit = 0, Key_W, Key_A, Key_S, Key_D, Key_Space, Key_LShift, ScrollWheelY;
+char Quit = 0;
+char Key_W = 0;
+char Key_A = 0;
+char Key_S = 0;
+char Key_D = 0;
+char Key_Space = 0;
+char Key_LShift = 0;
+char ScrollWheelY = 0;
 //Track DeltaTime.
-float DeltaTime;
-unsigned int LastFrameTime, CurrentFrameTime;
+float DeltaTime = 0;
+unsigned int LastFrameTime = 0, CurrentFrameTime = 0;
 //Mouse Position change relative every frame.
-int MouseXRelative, MouseYRelative;
+int MouseXRelative = 0, MouseYRelative = 0;
+
+char AllowUserInput = 0;
 };
 
 #endif
