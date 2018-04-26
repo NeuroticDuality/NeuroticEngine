@@ -12,7 +12,7 @@ public:
   GLuint ShaderProgram;
   int Success;
   char* Log;
-
+  int CurrentTexture;
   int GenerateShaders();
 };
 

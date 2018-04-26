@@ -2,8 +2,7 @@
 #include "fragment.hpp"
 #include "vertex.hpp"
 
-int Shader::GenerateShaders()
-{
+int Shader::GenerateShaders(){
 //Allocate memory for shader error log.
   char Log[512];
 //Assign VertexSource to VertexShader then compile.
@@ -12,8 +11,7 @@ int Shader::GenerateShaders()
   glCompileShader(VertexShader);
 //Check for compilation errors.
   glGetShaderiv(VertexShader, GL_COMPILE_STATUS, &Success);
-  if(!Success)
-  {
+  if(!Success){
     glGetShaderInfoLog(VertexShader, 512, NULL, Log);
     printf("Vertex Compilation Failed:\n%s", Log);
     return 1;
@@ -24,8 +22,7 @@ int Shader::GenerateShaders()
   glCompileShader(FragmentShader);
 //Check for compilation errors.
   glGetShaderiv(FragmentShader, GL_COMPILE_STATUS, &Success);
-  if(!Success)
-  {
+  if(!Success){
     glGetShaderInfoLog(FragmentShader, 512, NULL, Log);
     printf("Fragment Compilation Failed:\n%s", Log);
     return 1;
@@ -37,8 +34,7 @@ int Shader::GenerateShaders()
   glLinkProgram(ShaderProgram);
 //Check for compilation errors.
   glGetShaderiv(ShaderProgram, GL_COMPILE_STATUS, &Success);
-  if(!Success)
-  {
+  if(!Success){
     glGetShaderInfoLog(ShaderProgram, 512, NULL, Log);
     printf("Fragment Compilation Failed:\n%s", Log);
     return 1;

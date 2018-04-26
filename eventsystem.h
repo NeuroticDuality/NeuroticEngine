@@ -25,9 +25,8 @@ char ScrollWheelY = 0;
 float DeltaTime = 0;
 unsigned int LastFrameTime = 0, CurrentFrameTime = 0;
 //Mouse Position change relative every frame.
-int MouseXRelative = 0, MouseYRelative = 0;
-
-char AllowUserInput = 0;
+float MouseXRelative = 0, MouseYRelative = 0;
+char CaptureMouse = 0;
 };
 
 #endif

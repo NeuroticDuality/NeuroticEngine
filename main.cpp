@@ -1,11 +1,9 @@
 #include <iostream>
-//#include <glm.hpp>
 #include "engine.hpp"
 
-int main(int argc, char* argv[])
-{
-EngineStart();
+int main(int argc, char* argv[]){
 
+EngineStart();
 return 0;
 }
 

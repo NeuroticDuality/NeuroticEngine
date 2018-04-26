@@ -8,8 +8,7 @@ void Eventsystem::SetDeltaTime()
   LastFrameTime = CurrentFrameTime;
 }
 
-void Eventsystem::HandleEvents()
-{
+void Eventsystem::HandleEvents(){
 //Get delta time.
   SetDeltaTime();
 //Reset values.
@@ -18,26 +17,28 @@ void Eventsystem::HandleEvents()
   ScrollWheelY = 0;
 
 //Poll events and set values accordingly.
-  while(SDL_PollEvent(&Event))
-  {
-    if (Event.type == SDL_MOUSEMOTION)
-    {
-    MouseXRelative =  Event.motion.xrel;
-    MouseYRelative = -Event.motion.yrel;
+  while(SDL_PollEvent(&Event)){
+    if (Event.type == SDL_MOUSEMOTION && CaptureMouse == 1){
+    MouseXRelative +=  Event.motion.xrel;
+    MouseYRelative += -Event.motion.yrel;
     }
-  switch(Event.type)
-      {
+  switch(Event.type){
         case SDL_QUIT:
         Quit = 1;
         break;
-
-        if(AllowUserInput)
-        {
         case SDL_KEYDOWN:
-          switch(Event.key.keysym.sym)
-          {
+          switch(Event.key.keysym.sym){
           case SDLK_ESCAPE:
-          Quit = 1;
+          if(CaptureMouse){
+          CaptureMouse = 0;
+          SDL_SetRelativeMouseMode(SDL_FALSE);
+          SDL_CaptureMouse(SDL_FALSE);
+          }
+          else{
+          CaptureMouse = 1;
+          SDL_SetRelativeMouseMode(SDL_TRUE);
+          SDL_CaptureMouse(SDL_TRUE);
+          }
           break;
           case SDLK_w:
           Key_W = 1;
@@ -61,8 +62,7 @@ void Eventsystem::HandleEvents()
         break;
 
         case SDL_KEYUP:
-          switch(Event.key.keysym.sym)
-          {
+          switch(Event.key.keysym.sym){
           case SDLK_w:
           Key_W = 0;
           break;
@@ -86,13 +86,12 @@ void Eventsystem::HandleEvents()
 
         case SDL_MOUSEWHEEL:
           ScrollWheelY = Event.wheel.y;
-          }
+
       }
     }
 
 }
 
-void Eventsystem::CapFPS()
-{
+void Eventsystem::CapFPS(){
   if(DeltaTime < 1000 / 60) SDL_Delay(1000 / 60 - DeltaTime);
 }
